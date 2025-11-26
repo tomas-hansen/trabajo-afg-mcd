@@ -70,21 +70,22 @@ def main(engine="auto"):
     print(f"Aplicar en ventana [t, t+1] para t+1={res['t_next']}")
 
     # 5) (opcional) backtest corto con XGB (últimas 72 h)
-    try:
-        bt = backtest_optimizer(
-            df_h, xgb_model, xgb_features, REAGENT_COLS, BOUNDS,
-            start=str(df_h.index[-72]), end=str(df_h.index[-1]),
-            maxiter=30, popsize=12, seed=123
-        )
-        print("\nBacktest (últimas 72h):")
-        print("Mejora media (opt - base):", (bt["opt_pred"] - bt["baseline_pred"]).mean())
-        if bt["real_next"].notna().any():
-            rmse_base = np.sqrt(np.nanmean((bt["baseline_pred"] - bt["real_next"])**2))
-            rmse_opt  = np.sqrt(np.nanmean((bt["opt_pred"]    - bt["real_next"])**2))
-            print("RMSE baseline vs real:", rmse_base)
-            print("RMSE ópt vs real     :", rmse_opt)
-    except Exception as e:
-        print("Backtest omitido:", e)
+    #Se demora mucho
+    # try:
+    #     bt = backtest_optimizer(
+    #         df_h, xgb_model, xgb_features, REAGENT_COLS, BOUNDS,
+    #         start=str(df_h.index[-72]), end=str(df_h.index[-1]),
+    #         maxiter=30, popsize=12, seed=123
+    #     )
+    #     print("\nBacktest (últimas 72h):")
+    #     print("Mejora media (opt - base):", (bt["opt_pred"] - bt["baseline_pred"]).mean())
+    #     if bt["real_next"].notna().any():
+    #         rmse_base = np.sqrt(np.nanmean((bt["baseline_pred"] - bt["real_next"])**2))
+    #         rmse_opt  = np.sqrt(np.nanmean((bt["opt_pred"]    - bt["real_next"])**2))
+    #         print("RMSE baseline vs real:", rmse_base)
+    #         print("RMSE ópt vs real     :", rmse_opt)
+    # except Exception as e:
+    #     print("Backtest omitido:", e)
 
 if __name__ == "__main__":
     # engine="auto" | "lstm" | "xgb"
