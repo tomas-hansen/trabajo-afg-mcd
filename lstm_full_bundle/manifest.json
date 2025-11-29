@@ -1,0 +1,11 @@
+{
+  "created_at": "2025-11-29 11:09:40",
+  "python_version": "3.12.10",
+  "model_type": "LSTM_full",
+  "target": "% Iron Concentrate",
+  "scaler": "MinMaxScaler",
+  "window_shape_train": [
+    3550,
+    91
+  ]
+}

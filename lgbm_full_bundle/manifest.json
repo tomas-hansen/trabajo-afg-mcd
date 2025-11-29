@@ -1,0 +1,7 @@
+{
+  "created_at": "2025-11-29 11:09:42",
+  "python_version": "3.12.10",
+  "model_type": "LightGBM_full",
+  "target": "% Iron Concentrate",
+  "scaler": "MinMaxScaler"
+}
